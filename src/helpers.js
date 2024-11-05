@@ -43,10 +43,10 @@ function dotPathToHash(entry, target = {}, options = {}) {
   const defaultValue =
     entry[`defaultValue${options.suffix}`] || entry.defaultValue || ''
 
-  let newValue =
+  let newValue = defaultValue ||
     typeof options.value === 'function'
       ? options.value(options.locale, entry.namespace, key, defaultValue)
-      : options.value || defaultValue
+      : options.value
 
   if (path.endsWith(separator)) {
     path = path.slice(0, -separator.length)
